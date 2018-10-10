@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions.c
+header.h
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
+
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_init_labyrinth.c
+header.h
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
+
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_sauves.c
+header.h
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
+
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/main.c
+header.h
+/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
+
