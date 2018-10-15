@@ -67,8 +67,8 @@ void updateMatrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrix
     if (newValue != -1){
         labyrinth->matrix[x][y] = newValue;
         for(int i=0; i<4; i++){
-            for(int j=0; j<labyrinth->row; j++){
-                for(int k=0; k<labyrinth->col; k++){
+            for(int j=1; j<labyrinth->row; j++){
+                for(int k=1; k<labyrinth->col; k++){
                     if (matrixSurroundings[0][i] == labyrinth->matrix[j][k] && matrixSurroundings[1][i] != 0){
                         labyrinth->matrix[j][k] = newValue;
                     }
@@ -79,8 +79,8 @@ void updateMatrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrix
 }
 
 void clearLabyrinth(Labyrinth* labyrinth){
-    for(int i=0; i<labyrinth->row; i++){
-        for(int j=0; j<labyrinth->col; j++){
+    for(int i=1; i<labyrinth->row; i++){
+        for(int j=1; j<labyrinth->col; j++){
             if (labyrinth->matrix[i][j] != 0) labyrinth->matrix[i][j] = 1;
         }
     }
@@ -89,7 +89,27 @@ void clearLabyrinth(Labyrinth* labyrinth){
 void displayMatrixClean(Labyrinth* labyrinth){
     for(int i=0; i<labyrinth->row; i++){
         for(int j=0; j<labyrinth->col; j++){
-            labyrinth->matrix[i][j] == 0 ? printf("# ") : printf("  ");
+            /*switch (labyrinth->matrix[i][j]){
+                case 0 :
+                    printf("# ");
+                case 1 :
+                    printf("  ");
+                case 2 :
+                    printf("P ");
+                default :
+                    printf("B ");
+            }*/
+
+            if (labyrinth->matrix[i][j] == 0){
+                printf("# ");
+            } else if (labyrinth->matrix[i][j] == 1){
+                printf("  ");
+            } else if (labyrinth->matrix[i][j] == 2){
+                printf("P ");
+            } else {
+               printf("%d ", labyrinth->matrix[i][j]);
+            }
+            //labyrinth->matrix[i][j] == 0 ? printf("# ") : printf("%d ", labyrinth->matrix[i][j]);
             //labyrinth->matrix[i][j] == 0 ? ( (i == 1 && j == 0) || (i == labyrinth->row-2 && j == labyrinth->col-1) ? printf("  ") : printf("# ")) : printf("  ") ;
         }
         printf("\n");
@@ -97,18 +117,17 @@ void displayMatrixClean(Labyrinth* labyrinth){
 }
 
 void initLabyrinth(Labyrinth* labyrinth){
-    int** matrix;
-    int row = 9, col = 23, value = 0;
 
-    matrix = allocateMatrix(row, col , value);
+    int** matrix;
+    int value = 0;
+
+    matrix = allocateMatrix(labyrinth->row, labyrinth->col , value);
 
     labyrinth->matrix = matrix;
-    labyrinth->row = row;
-    labyrinth->col = col;
 
     initMatrix(labyrinth);
 
-
+    printf("1 0 : %d\n", labyrinth->matrix[1][0]);
     Coordinates *listTmpCoordinates;
     int dimension = (labyrinth->row-2)*(labyrinth->col-2); //external walls do not count
 
@@ -119,9 +138,59 @@ void initLabyrinth(Labyrinth* labyrinth){
     randomizeCoordinatesVector(labyrinth->row, labyrinth->col, listTmpCoordinates);
     generateLabyrinth(labyrinth, listTmpCoordinates);
 
-    freeVectorCoordinates(listTmpCoordinates);
+    //freeVectorCoordinates(listTmpCoordinates);
 
     clearLabyrinth(labyrinth);
     displayMatrixClean(labyrinth);
+}
 
+void createLabyrinth(Labyrinth* labyrinth){
+    int row, col;
+    char fileName[256], *positionEntree;
+    Coordinates coordinatesPlayer;
+
+    printf("Nom du fichier?\n");
+
+    if (fgets(fileName, sizeof(fileName), stdin)) {
+
+        positionEntree = strchr(fileName, '\n'); // On recherche l'"Entrée"
+        if (positionEntree != NULL) // Si on a trouvé le retour à la ligne
+        {
+            *positionEntree = '\0'; // On remplace ce caractère par \0
+        }
+        printf("%s\n", fileName);
+    }
+
+    strcpy(labyrinth->name, fileName);
+
+
+    do {
+        printf("Nombre de lignes ? (impair)\n");
+        scanf("%d", &row);
+    } while (row % 2 == 0);
+
+    do {
+        printf("Nombre de colonnes ? (impair)\n");
+        scanf("%d", &col);
+    } while (col % 2 == 0);
+
+    labyrinth->row = row;
+    labyrinth->col = col;
+
+    coordinatesPlayer.x = 1;
+    coordinatesPlayer.y = 0;
+    labyrinth->player = coordinatesPlayer;
+
+    printf("%s %d %d\n", fileName, row, col);
+
+    initLabyrinth(labyrinth);
+    sauveLaby(labyrinth, fileName);
+
+    printf("\n------------------------------\n");
+    printf("Current Laby :\n");
+    printf("\tName : %s\n", labyrinth->name);
+    printf("\tRow : %d\n", labyrinth->row);
+    printf("\tCol : %d\n", labyrinth->col);
+    printf("\tPlayer : %d %d\n", labyrinth->player.x, labyrinth->player.y);
+    printf("------------------------------\n");
 }

@@ -177,6 +177,33 @@ functions_init_labyrinth.c.s:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_init_labyrinth.c.s
 .PHONY : functions_init_labyrinth.c.s
 
+functions_play.o: functions_play.c.o
+
+.PHONY : functions_play.o
+
+# target to build an object file
+functions_play.c.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_play.c.o
+.PHONY : functions_play.c.o
+
+functions_play.i: functions_play.c.i
+
+.PHONY : functions_play.i
+
+# target to preprocess a source file
+functions_play.c.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_play.c.i
+.PHONY : functions_play.c.i
+
+functions_play.s: functions_play.c.s
+
+.PHONY : functions_play.s
+
+# target to generate assembly for a file
+functions_play.c.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_play.c.s
+.PHONY : functions_play.c.s
+
 functions_sauves.o: functions_sauves.c.o
 
 .PHONY : functions_sauves.o
@@ -246,6 +273,9 @@ help:
 	@echo "... functions_init_labyrinth.o"
 	@echo "... functions_init_labyrinth.i"
 	@echo "... functions_init_labyrinth.s"
+	@echo "... functions_play.o"
+	@echo "... functions_play.i"
+	@echo "... functions_play.s"
 	@echo "... functions_sauves.o"
 	@echo "... functions_sauves.i"
 	@echo "... functions_sauves.s"

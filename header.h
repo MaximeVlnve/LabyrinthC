@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <memory.h>
+#include <unistd.h>
 
 #ifndef PROJET_HEADER_H
 #define PROJET_HEADER_H
@@ -22,10 +24,13 @@ typedef struct
     int** matrix;
     int row;
     int col;
+    char name[256];
+    Coordinates player;
 } Labyrinth;
 
 //  Functions useful
 int generateRand(int max);
+void viderBuffer();
 
 //      Vectors
 //          Int
@@ -60,9 +65,16 @@ void displayMatrixClean(Labyrinth* labyrinth);
 void generateLabyrinth(Labyrinth* labyrinth, Coordinates* vector);
 void initLabyrinth(Labyrinth* labyrinth);
 
+void createLabyrinth(Labyrinth* labyrinth);
 
 
 // Functions sauves
 
-void sauveLaby(Labyrinth* labyrinth);
+void sauveLaby(Labyrinth* labyrinth, char fileName[256]);
+void loadLaby(Labyrinth* labyrinth);
+
+// Functions play
+
+void play(Labyrinth* labyrinth);
+int verifyMoveAllowed(Labyrinth* labyrinth, Coordinates nextPosition);
 

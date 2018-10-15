@@ -29,11 +29,22 @@ int main() {
             break;
     }*/
 
-    Labyrinth labyrinth;
+    /*
 
     initLabyrinth(&labyrinth);
 
-    //sauveLaby(&labyrinth);
+    sauveLaby(&labyrinth);*/
+
+    Labyrinth labyrinth;
+
+    createLabyrinth(&labyrinth);
+    play(&labyrinth);
+
+    //loadLaby(&labyrinth);
+
+    //displayMatrixClean(&labyrinth);
+
+
 
     return(0);
 

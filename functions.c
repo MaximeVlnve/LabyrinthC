@@ -134,9 +134,18 @@ void initMatrix(Labyrinth* labyrinth){ //init matrix with values 1,2,3...
         }
     }
 
-    labyrinth->matrix[1][0] = 1;                                        //Set entry
+    labyrinth->matrix[1][0] = 2;                                        //Set player to entry
     labyrinth->matrix[(labyrinth->row)-2][(labyrinth->col)-1] = 1;      //Set exit
 
+}
+
+void viderBuffer()
+{
+    int c = 0;
+    while (c != '\n' && c != EOF)
+    {
+        c = getchar();
+    }
 }
 
 

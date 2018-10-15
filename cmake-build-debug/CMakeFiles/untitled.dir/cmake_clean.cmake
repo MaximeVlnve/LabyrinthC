@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/untitled.dir/functions_sauves.c.o"
   "CMakeFiles/untitled.dir/functions_init_labyrinth.c.o"
   "CMakeFiles/untitled.dir/functions.c.o"
+  "CMakeFiles/untitled.dir/functions_play.c.o"
   "untitled.pdb"
   "untitled"
 )
