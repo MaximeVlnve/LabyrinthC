@@ -25,7 +25,8 @@ typedef struct
     int row;
     int col;
     char name[256];
-    Coordinates player;
+    int boolEmpty;
+    Coordinates* player;
 } Labyrinth;
 
 //  Functions useful

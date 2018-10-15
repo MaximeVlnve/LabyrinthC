@@ -3,31 +3,60 @@
 int main() {
     srand( time(NULL) ); //init rand
 
-    /*int choice;
+    int choice, exit = 1;
+    Labyrinth labyrinth;
 
-    printf("------------ LABYRINTH ------------\n\n");
-    printf("\t 1 - Creer un labyrinthe\n");
-    printf("\t 2 - Charger un labyrinthe\n");
-    printf("\t 3 - Jouer\n");
-    printf("\t 4 - Quitter\n\n");
-    printf("-----------------------------------\n\n");
+    while (exit){
+        printf("------------ LABYRINTH ------------\n\n");
+        printf("\t 1 - Creer un labyrinthe\n");
+        printf("\t 2 - Charger un labyrinthe\n");
+        printf("\t 3 - Jouer\n");
+        printf("\t 4 - Quitter\n\n");
+        printf("-----------------------------------\n\n");
 
-    scanf("%d", &choice);
+        scanf("%d", &choice);
 
-    switch(choice)
-    {
-        case 1: printf("");
-            Labyrinth labyrinth;
+        switch(choice)
+        {
+            case 1:
+                createLabyrinth(&labyrinth);
 
-            initLabyrinth(&labyrinth);
-            break;
-        case 2: printf("Charger un labyrinthe\n");
-            break;
-        case 3: printf("Jouer\n");
-            break;
-        default: printf("Quitter\n");
-            break;
-    }*/
+                printf("\n------------------------------\n");
+                printf("Current Laby :\n");
+                printf("\tName : %s\n", labyrinth.name);
+                printf("\tRow : %d\n", labyrinth.row);
+                printf("\tCol : %d\n", labyrinth.col);
+                printf("\tPlayer : %d %d\n", labyrinth.player->x, labyrinth.player->y);
+                printf("------------------------------\n");
+                play(&labyrinth);
+                break;
+            case 2:
+                loadLaby(&labyrinth);
+                play(&labyrinth);
+                break;
+            case 3:
+                printf("Jouer\n");
+
+                if (labyrinth.boolEmpty == 1){
+                    printf("Laby chargé %s\n", labyrinth.name);
+                    displayMatrixClean(&labyrinth);
+                    play(&labyrinth);
+                } else {
+                    printf("Pas de laby chargé\n");
+                    loadLaby(&labyrinth);
+                    play(&labyrinth);
+                }
+                break;
+            default:
+                printf("Quitter\n");
+                exit = 0;
+                break;
+        }
+
+    }
+
+
+
 
     /*
 
@@ -35,10 +64,10 @@ int main() {
 
     sauveLaby(&labyrinth);*/
 
-    Labyrinth labyrinth;
+    /*Labyrinth labyrinth;
 
     createLabyrinth(&labyrinth);
-    play(&labyrinth);
+    play(&labyrinth);*/
 
     //loadLaby(&labyrinth);
 

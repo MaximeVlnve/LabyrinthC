@@ -63,7 +63,7 @@ int valueToReplaceSurroundings(int** matrixSurroundings){
     return -1;
 }
 
-void updateMatrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrixSurroundings){
+void updateMatrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrixSurroundings){ //dispatch the newValue when breking a wall
     if (newValue != -1){
         labyrinth->matrix[x][y] = newValue;
         for(int i=0; i<4; i++){
@@ -127,7 +127,6 @@ void initLabyrinth(Labyrinth* labyrinth){
 
     initMatrix(labyrinth);
 
-    printf("1 0 : %d\n", labyrinth->matrix[1][0]);
     Coordinates *listTmpCoordinates;
     int dimension = (labyrinth->row-2)*(labyrinth->col-2); //external walls do not count
 
@@ -138,7 +137,7 @@ void initLabyrinth(Labyrinth* labyrinth){
     randomizeCoordinatesVector(labyrinth->row, labyrinth->col, listTmpCoordinates);
     generateLabyrinth(labyrinth, listTmpCoordinates);
 
-    //freeVectorCoordinates(listTmpCoordinates);
+    freeVectorCoordinates(listTmpCoordinates);
 
     clearLabyrinth(labyrinth);
     displayMatrixClean(labyrinth);
@@ -146,51 +145,46 @@ void initLabyrinth(Labyrinth* labyrinth){
 
 void createLabyrinth(Labyrinth* labyrinth){
     int row, col;
-    char fileName[256], *positionEntree;
-    Coordinates coordinatesPlayer;
+    char fileName[256], *positionEntree, buffer[256];
+
+    viderBuffer();
 
     printf("Nom du fichier?\n");
 
     if (fgets(fileName, sizeof(fileName), stdin)) {
 
-        positionEntree = strchr(fileName, '\n'); // On recherche l'"Entrée"
-        if (positionEntree != NULL) // Si on a trouvé le retour à la ligne
+        positionEntree = strchr(fileName, '\n'); // Looking for the \n of the user's input
+        if (positionEntree != NULL) // if \n found
         {
-            *positionEntree = '\0'; // On remplace ce caractère par \0
+            *positionEntree = '\0'; // then replace it by \0
         }
-        printf("%s\n", fileName);
     }
 
     strcpy(labyrinth->name, fileName);
 
 
     do {
-        printf("Nombre de lignes ? (impair)\n");
-        scanf("%d", &row);
+        printf("How many rows ? (odd)\n");
+        fgets (buffer, 256, stdin);
+        row = atoi (buffer);
     } while (row % 2 == 0);
 
     do {
-        printf("Nombre de colonnes ? (impair)\n");
-        scanf("%d", &col);
+        printf("How many columns ? (odd)\n");
+        fgets (buffer, 256, stdin);
+        col = atoi (buffer);
     } while (col % 2 == 0);
 
     labyrinth->row = row;
     labyrinth->col = col;
-
-    coordinatesPlayer.x = 1;
-    coordinatesPlayer.y = 0;
-    labyrinth->player = coordinatesPlayer;
-
-    printf("%s %d %d\n", fileName, row, col);
+    labyrinth->boolEmpty = 1;
+    labyrinth->player->x = 1;
+    labyrinth->player->y = 0;
 
     initLabyrinth(labyrinth);
     sauveLaby(labyrinth, fileName);
+}
 
-    printf("\n------------------------------\n");
-    printf("Current Laby :\n");
-    printf("\tName : %s\n", labyrinth->name);
-    printf("\tRow : %d\n", labyrinth->row);
-    printf("\tCol : %d\n", labyrinth->col);
-    printf("\tPlayer : %d %d\n", labyrinth->player.x, labyrinth->player.y);
-    printf("------------------------------\n");
+void settingBonusMalus(Labyrinth* labyrinth){
+    
 }
