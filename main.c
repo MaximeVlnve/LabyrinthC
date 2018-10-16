@@ -47,7 +47,7 @@ int main() {
                     play(&labyrinth);
                 }
                 break;
-            default:
+            case 4:
                 printf("Quitter\n");
                 exit = 0;
                 break;
@@ -58,16 +58,16 @@ int main() {
 
 
 
-    /*
 
-    initLabyrinth(&labyrinth);
 
-    sauveLaby(&labyrinth);*/
 
     /*Labyrinth labyrinth;
 
+
     createLabyrinth(&labyrinth);
-    play(&labyrinth);*/
+
+    settingBonusMalus(&labyrinth);*/
+    //play(&labyrinth);
 
     //loadLaby(&labyrinth);
 

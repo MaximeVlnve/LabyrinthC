@@ -31,7 +31,7 @@ typedef struct
 
 //  Functions useful
 int generateRand(int max);
-void viderBuffer();
+void emptyBuffer();
 
 //      Vectors
 //          Int
@@ -67,6 +67,7 @@ void generateLabyrinth(Labyrinth* labyrinth, Coordinates* vector);
 void initLabyrinth(Labyrinth* labyrinth);
 
 void createLabyrinth(Labyrinth* labyrinth);
+void settingBonusMalus(Labyrinth* labyrinth);
 
 
 // Functions sauves

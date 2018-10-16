@@ -4,8 +4,14 @@
 
 #include "header.h"
 
-void sauveLaby(Labyrinth* labyrinth, char fileName[256]){
-
+/*
+ * La fonction sauveLaby utilise un nom de fichier en parametre et
+ * enregistre le labirynthe. On sauvegarde des parametres utiles pour la suite
+ * comme les dimensions (row et col), la position du joueur
+ * (afin de replacer le joueur correctement quand on chargera le labyrinthe).
+ */
+void sauveLaby(Labyrinth* labyrinth, char fileName[256]) {
+    int i, j;
     char path[100], extension[5];
 
     strcpy(path,  "/Users/maxime/Documents/Ensi/Prog/LabyrinthC/sauves/");
@@ -17,8 +23,7 @@ void sauveLaby(Labyrinth* labyrinth, char fileName[256]){
 
     FILE *f = fopen(path, "w"); // open the file or create it if it already exists
 
-    if (f == NULL)
-    {
+    if (f == NULL) {
         printf("Error opening file!\n");
         exit(1);
     }
@@ -26,8 +31,8 @@ void sauveLaby(Labyrinth* labyrinth, char fileName[256]){
     //fprintf(f, "%d\n%d\n%d\n%d\n%d\n", labyrinth->player->x, labyrinth->player->y, labyrinth->col, labyrinth->row, labyrinth->boolEmpty);
     fprintf(f, "%d\n%d\n%d\n%d\n1\n", labyrinth->player->x, labyrinth->player->y, labyrinth->col, labyrinth->row); //writing infos we need if we want to re-open
 
-    for(int i=0; i<labyrinth->row; i++){
-        for(int j=0; j<labyrinth->col; j++){
+    for (i=0; i<labyrinth->row; i++) {
+        for(j=0; j<labyrinth->col; j++) {
             fprintf(f, "%d", labyrinth->matrix[i][j]); //writing every coordinates
         }
     }
@@ -35,29 +40,35 @@ void sauveLaby(Labyrinth* labyrinth, char fileName[256]){
     fclose(f);
 
 }
-
-void loadLaby(Labyrinth* labyrinth){
-    char fileName[256], path[100], extension[5], *positionEntree;
+/*
+ * On utilise une entrée utilisateur pour savoir quel labyrinthe charger.
+ * Si le nom d'un fichier correspond à l'entrée utilisateur,
+ * alors on accède au fichier et on récupère les informations
+ * présentes dans le fichier.
+ */
+void loadLaby(Labyrinth* labyrinth) {
+    char fileName[256], path[100], extension[5], *entryPosition;
 
     printf("Enter the laby's name you want to load\n");
 
-    viderBuffer();
+    emptyBuffer();
 
     strcpy(path,  "/Users/maxime/Documents/Ensi/Prog/LabyrinthC/sauves/");
     strcpy(extension, ".txt");
 
     if (fgets(fileName, sizeof(fileName), stdin)) {
 
-        positionEntree = strchr(fileName, '\n'); // Looking for the \n of the user's input
-        if (positionEntree != NULL) // if \n found
-        {
-            *positionEntree = '\0'; // then replace it by \0
+        entryPosition = strchr(fileName, '\n'); // Looking for the \n of the user's input
+        if (entryPosition != NULL) { // if \n found
+            *entryPosition = '\0'; // then replace it by \0
         }
 
         strcat(path, fileName);
         strcat(path, extension); //copying path, fileName, and extension to load a labyrinth
 
-        if( access( path, F_OK ) != -1 ) { //verifies file exists
+        if (access( path, F_OK ) != -1) { //verifies file exists
+            char str[240];
+            int index=0, row, col, playerX, playerY, isEmpty, vector[240], i, j, value=0;
 
             FILE *f = fopen(path, "r");
 
@@ -66,14 +77,10 @@ void loadLaby(Labyrinth* labyrinth){
                 exit(1);
             }
 
-            char str[240];
-            int index=0, row, col, playerX, playerY, isEmpty;
-
-
             while (1) {
                 if (fgets(str, 240, f) == NULL) break;
 
-                switch (index){
+                switch (index) {
                     case 0:
                         playerX = atoi(&str[0]); // retrieve X player's position
                         break;
@@ -87,16 +94,14 @@ void loadLaby(Labyrinth* labyrinth){
                         row = atoi(&str[0]); // retrieve labyrinth's row size
                         break;
                     case 4:
-                        isEmpty = atoi(&str[0]);
+                        isEmpty = atoi(&str[0]); // retourne un booléen qui détermine si le labyrinthe est vide ou pas
                         break;
                 }
 
                 index++;
             }
 
-            int vector[240];
-
-            for(int i=0; i<strlen(str); i++){
+            for (i=0; i<strlen(str); i++) {
                 vector[i] = str[i] - '0'; // retrieve labyrinth's coordinates in an array
             }
 
@@ -109,9 +114,9 @@ void loadLaby(Labyrinth* labyrinth){
             strcpy(labyrinth->name, fileName);
             labyrinth->matrix = allocateMatrix(labyrinth->row, labyrinth->col, 0);
 
-            int value=0;
-            for(int i=0; i<labyrinth->row; i++){
-                for(int j=0; j<labyrinth->col; j++){
+
+            for (i=0; i<labyrinth->row; i++) {
+                for (j=0; j<labyrinth->col; j++) {
                     labyrinth->matrix[i][j] = vector[value];
                     value++;
                 }

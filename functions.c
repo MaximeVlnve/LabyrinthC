@@ -3,8 +3,10 @@
 //
 
 #include "header.h"
-
-int generateRand(int max){
+/*
+ *Permet de générer un nombre aléatoire.
+ */
+int generateRand(int max) {
     int randomNumber = 0;
     randomNumber = rand() % max;
 
@@ -14,51 +16,73 @@ int generateRand(int max){
 //  Vectors
 //      Int
 
-void displayVector(int *vector, int dimension){
+/*
+ * Permet d'afficher un tableau à une dimension
+ */
+void displayVector(int *vector, int dimension) {
+    int i;
 
-    for(int i=0; i<dimension; i++){
+    for(i=0; i<dimension; i++) {
         *(vector+i) = i;
         printf("%d ", *(vector+i));
     }
+
     printf("\n");
 }
 
-int* allocateVector(int dimension, int value){
-    int *vector;
+/*
+ * Permet d'allouer un tableau à une dimension
+ */
+int* allocateVector(int dimension, int value) {
+    int *vector, i;
     vector = (int *)malloc((dimension) * sizeof(int));
 
-    for(int i=0; i<dimension; i++){
+    for(i=0; i<dimension; i++) {
         vector[i] = value;
     }
 
     return vector;
 }
-
-void freeVector(int* vector){
+/*
+ * Permet de libérer la mémoire occupée par un tableau à une dimension
+ */
+void freeVector(int* vector) {
     free(vector);
 }
 
 
 //      Coordinates
 
-void freeVectorCoordinates(Coordinates* vector){
+/*
+ * Permet de libérer la mémoire occupée par un tableau de coordonnées à une dimension
+ */
+void freeVectorCoordinates(Coordinates* vector) {
     free(vector);
 }
 
-void displayVectorCoordinates(Coordinates *vector, int dimension){
+/*
+ * Permet d'afficher un tableau de coordonnées à une dimension
+ */
+void displayVectorCoordinates(Coordinates *vector, int dimension) {
+    int i;
 
-    for(int i=0; i<dimension; i++){
+    for(i=0; i<dimension; i++) {
         printf("[%d][%d]\n", vector[i].x, vector[i].y);
     }
+
     printf("\n");
 }
 
-Coordinates* allocateVectorCoordinates(int dimension, int value){
-
+/*
+ * Permet d'allouer un tableau de coordonnées à une dimension
+ */
+Coordinates* allocateVectorCoordinates(int dimension, int value) {
+    int i;
     Coordinates *vector;
+
     vector = (Coordinates *)malloc((dimension) * sizeof(Coordinates));
 
-    for(int i=0; i<dimension; i++){
+    for(i=0; i<dimension; i++) {
         vector[i].x = value;
         vector[i].y = value;
     }
@@ -66,23 +90,28 @@ Coordinates* allocateVectorCoordinates(int dimension, int value){
     return vector;
 }
 
-void fillCoordinatesVector(int row, int col, Coordinates* vector){ //fill coordinates vector with [0][0], [0][1], [0][2]...
-    int cpt = 0;
+/*
+ * Permet de remplir un tableau de coordonnées
+ */
+void fillCoordinatesVector(int row, int col, Coordinates* vector) { //fill coordinates vector with [0][0], [0][1], [0][2]...
+    int cpt = 0, i, j;
 
-    for(int i=1; i<row-1; i++){
-        for(int j=1; j<col-1; j++){
+    for(i=1; i<row-1; i++) {
+        for(j=1; j<col-1; j++) {
             vector[cpt].x = i;
             vector[cpt].y = j;
             cpt++;
-
         }
     }
 }
 
-void randomizeCoordinatesVector(int row, int col, Coordinates* vector){
-    int random, tmpX, tmpY;
+/*
+ * Permet de mélanger un tableau de coordonnées
+ */
+void randomizeCoordinatesVector(int row, int col, Coordinates* vector) {
+    int random, tmpX, tmpY, i;
 
-    for(int i=0; i<(row-2)*(col-2); i++){ //foreach cell which is not an outside wall, we swap coords with another
+    for(i=0; i<(row-2)*(col-2); i++) { //foreach cell which is not an outside wall, we swap coords with another
         random = generateRand((row-2)*(col-2));
         tmpX = vector[i].x;
         tmpY = vector[i].y;
@@ -98,37 +127,54 @@ void randomizeCoordinatesVector(int row, int col, Coordinates* vector){
 
 //  Matrix
 
-void displayMatrix(Labyrinth* labyrinth){
-    for(int i=0; i<labyrinth->row; i++){
-        for(int j=0; j<labyrinth->col; j++){
+/*
+ * Permet d'afficher un tableau à deux dimensions
+ */
+void displayMatrix(Labyrinth* labyrinth) {
+    int i, j;
+
+    for(i=0; i<labyrinth->row; i++) {
+        for(j=0; j<labyrinth->col; j++) {
             labyrinth->matrix[i][j] == 0 ? ( (i == 1 && j == 0) || (i == labyrinth->row-2 && j == labyrinth->col-1) ? printf("  ") : printf("# ")) : printf("%d ", labyrinth->matrix[i][j]) ;
         }
         printf("\n");
     }
 }
 
-int** allocateMatrix(int row, int col, int value){
-    int **matrix;
+/*
+ * Permet d'allouer un tableau à deux dimensions
+ */
+int** allocateMatrix(int row, int col, int value) {
+    int **matrix, i;
 
     matrix = (int**)malloc(row * sizeof(int*));
-    for(int i=0; i<row;i++){
+    for (i=0; i<row; i++) {
         matrix[i] = allocateVector(col, value);
     }
 
     return matrix;
 }
 
-void freeMatrix(int** matrix, int row){
-    for(int i=0; i<row; i++){
+/*
+ * Permet de libérer la mémoire occupée un tableau à deux dimensions
+ */
+void freeMatrix(int** matrix, int row) {
+    int i;
+
+    for (i=0; i<row; i++) {
         freeVector(matrix[i]);
     }
     free(matrix);
 }
 
-void initMatrix(Labyrinth* labyrinth){ //init matrix with values 1,2,3...
-    int value = 1;
-    for(int i=1; i<labyrinth->row; i+=2){
-        for(int j=1; j<labyrinth->col; j+=2){
+/*
+ * Permet d'initialiser le labyrinthe de base (avant d'effectuer l'algorithme)
+ * qui créer un labyrinthe parfait
+ */
+void initMatrix(Labyrinth* labyrinth) { //init matrix with values 1,2,3...
+    int value = 1, i, j;
+    for (i=1; i<labyrinth->row; i+=2) {
+        for (j=1; j<labyrinth->col; j+=2) {
             labyrinth->matrix[i][j] = value;
             value++;
         }
@@ -136,14 +182,15 @@ void initMatrix(Labyrinth* labyrinth){ //init matrix with values 1,2,3...
 
     labyrinth->matrix[1][0] = 2;                                        //Set player to entry
     labyrinth->matrix[(labyrinth->row)-2][(labyrinth->col)-1] = 1;      //Set exit
-
 }
 
-void viderBuffer()
-{
+/*
+ *  Permet de vider le buffer suite à une entrée utilisateur
+ */
+void emptyBuffer() {
     int c = 0;
-    while (c != '\n' && c != EOF)
-    {
+
+    while (c != '\n' && c != EOF) {
         c = getchar();
     }
 }
