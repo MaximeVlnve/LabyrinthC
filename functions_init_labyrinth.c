@@ -142,6 +142,10 @@ void displayMatrixClean(Labyrinth* labyrinth) {
                 printf("  ");
             } else if (labyrinth->matrix[i][j] == 2) {
                 printf("P ");
+            } else if (labyrinth->matrix[i][j] == 3) {
+                printf("+ ");
+            } else if (labyrinth->matrix[i][j] == 4) {
+                printf("- ");
             } else {
                printf("%d ", labyrinth->matrix[i][j]);
             }
@@ -179,6 +183,7 @@ void initLabyrinth(Labyrinth* labyrinth) {
     freeVectorCoordinates(listTmpCoordinates);
 
     clearLabyrinth(labyrinth);
+    settingBonusMalus(labyrinth);
     displayMatrixClean(labyrinth);
 }
 
@@ -187,19 +192,15 @@ void initLabyrinth(Labyrinth* labyrinth) {
  */
 void createLabyrinth(Labyrinth* labyrinth){
     int row, col;
-    char fileName[256], *entryPosition, buffer[256];
+    char fileName[256], buffer[256];
 
-    emptyBuffer();
+    labyrinth->player = allocateVectorCoordinates(1, 0);
+    labyrinth->bonus = allocateVectorCoordinates(1, 0);
+    labyrinth->malus = allocateVectorCoordinates(1, 0);
 
     printf("Nom du fichier?\n");
 
-    if (fgets(fileName, sizeof(fileName), stdin)) {
-        entryPosition = strchr(fileName, '\n'); // Looking for the \n of the user's input
-
-        if (entryPosition != NULL) { // if \n found
-            *entryPosition = '\0'; // then replace it by \0
-        }
-    }
+    secureInput(fileName, 256);
 
     strcpy(labyrinth->name, fileName);
 
@@ -229,11 +230,17 @@ void createLabyrinth(Labyrinth* labyrinth){
 void settingBonusMalus(Labyrinth* labyrinth) {
     int bonusX, bonusY, malusX, malusY;
 
-    bonusX = generateRand(labyrinth->row -1);
-    bonusY = generateRand(labyrinth->col -1);
+    do {
+        bonusX = generateRand(labyrinth->row -1);
+        bonusY = generateRand(labyrinth->col -1);
+    } while ( labyrinth->matrix[bonusX][bonusY] != 1 );
 
-    malusX = generateRand(labyrinth->row -1);
-    malusY = generateRand(labyrinth->col -1);
+    labyrinth->matrix[bonusX][bonusY] = 3;
 
-    printf("%d %d", bonusX, bonusY);
+    do {
+        malusX = generateRand(labyrinth->row - 1);
+        malusY = generateRand(labyrinth->col - 1);
+    } while ( labyrinth->matrix[malusX][malusY] != 1);
+
+    labyrinth->matrix[malusX][malusY] = 4;
 }

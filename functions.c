@@ -184,16 +184,6 @@ void initMatrix(Labyrinth* labyrinth) { //init matrix with values 1,2,3...
     labyrinth->matrix[(labyrinth->row)-2][(labyrinth->col)-1] = 1;      //Set exit
 }
 
-/*
- *  Permet de vider le buffer suite à une entrée utilisateur
- */
-void emptyBuffer() {
-    int c = 0;
-
-    while (c != '\n' && c != EOF) {
-        c = getchar();
-    }
-}
 
 
 

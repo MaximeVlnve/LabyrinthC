@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/maxime/Documents/Ensi/Prog/LabyrinthC
+CMAKE_SOURCE_DIR = /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -176,6 +176,33 @@ functions_init_labyrinth.s: functions_init_labyrinth.c.s
 functions_init_labyrinth.c.s:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_init_labyrinth.c.s
 .PHONY : functions_init_labyrinth.c.s
+
+functions_input.o: functions_input.c.o
+
+.PHONY : functions_input.o
+
+# target to build an object file
+functions_input.c.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_input.c.o
+.PHONY : functions_input.c.o
+
+functions_input.i: functions_input.c.i
+
+.PHONY : functions_input.i
+
+# target to preprocess a source file
+functions_input.c.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_input.c.i
+.PHONY : functions_input.c.i
+
+functions_input.s: functions_input.c.s
+
+.PHONY : functions_input.s
+
+# target to generate assembly for a file
+functions_input.c.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/functions_input.c.s
+.PHONY : functions_input.c.s
 
 functions_play.o: functions_play.c.o
 
@@ -273,6 +300,9 @@ help:
 	@echo "... functions_init_labyrinth.o"
 	@echo "... functions_init_labyrinth.i"
 	@echo "... functions_init_labyrinth.s"
+	@echo "... functions_input.o"
+	@echo "... functions_input.i"
+	@echo "... functions_input.s"
 	@echo "... functions_play.o"
 	@echo "... functions_play.i"
 	@echo "... functions_play.s"

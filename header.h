@@ -27,11 +27,16 @@ typedef struct
     char name[256];
     int boolEmpty;
     Coordinates* player;
+    Coordinates* bonus;
+    Coordinates* malus;
 } Labyrinth;
 
-//  Functions useful
-int generateRand(int max);
-void emptyBuffer();
+typedef struct
+{
+    int points;
+    char name[256];
+} Score;
+
 
 //      Vectors
 //          Int
@@ -74,9 +79,17 @@ void settingBonusMalus(Labyrinth* labyrinth);
 
 void sauveLaby(Labyrinth* labyrinth, char fileName[256]);
 void loadLaby(Labyrinth* labyrinth);
+void sauveScore(Score* score, Labyrinth* labyrinth);
 
 // Functions play
 
 void play(Labyrinth* labyrinth);
 int verifyMoveAllowed(Labyrinth* labyrinth, Coordinates nextPosition);
+
+// Functions input
+//  Functions useful
+int generateRand(int max);
+void emptyBuffer();
+int secureInput(char *text, int length);
+int menu(int choixMin, int choixMax);
 

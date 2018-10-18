@@ -31,24 +31,29 @@ int verifyMoveAllowed(Labyrinth* labyrinth, Coordinates nextPosition) {
  */
 void play(Labyrinth* labyrinth) {
     Coordinates oldPosition, nextPosition;
-    char nextMove[10], *entryPosition;
+    char nextMove[10];
     int boolIsMoveAllowed = 1;
     int boolIsGameOver = 1;
+    Score* score;
+
+    score = (Score *)malloc(sizeof(Score));
+
+    score->points = 0;
+
+    printf("Entrez votre nom\n");
+    secureInput(score->name, 256);
+
+    printf("%s", score->name);
+
 
     while (boolIsGameOver) { //Verifies if the player is not a the end of the labyrinth
         oldPosition.x = labyrinth->player->x;
         oldPosition.y = labyrinth->player->y;
 
-        printf("Use ZQSD to move or press E to back menu\n");
+        printf("Score : %d - Use ZQSD to move or press E to back menu\n", score->points);
 
         do {
-            if (fgets(nextMove, sizeof(nextMove), stdin)) { //using fgets instead of scanf to secure input
-
-                entryPosition = strchr(nextMove, '\n'); // Looking for the \n of the user's input
-                if (entryPosition != NULL) { // if \n found
-                    *entryPosition = '\0'; // then replace it by \0
-                }
-            }
+            secureInput(nextMove, 10);
 
             if (nextMove[0] == 'Z' || nextMove[0] == 'z') { //if else to decide coordinates according zqsd system
                 nextPosition.x = labyrinth->player->x-1;
@@ -74,6 +79,8 @@ void play(Labyrinth* labyrinth) {
         labyrinth->player->x = nextPosition.x;
         labyrinth->player->y = nextPosition.y;
 
+        score->points++;
+
         labyrinth->matrix[oldPosition.x][oldPosition.y] = 1; // replacing player's previous position with 1 (code chose to identify a coordinate where player can go
         labyrinth->matrix[labyrinth->player->x][labyrinth->player->y] = 2;
         displayMatrixClean(labyrinth);
@@ -82,6 +89,8 @@ void play(Labyrinth* labyrinth) {
             boolIsGameOver = 0;
         }
 
-        sauveLaby(labyrinth, labyrinth->name); //saves the move in case player leaves and wants to play again with that labyrinth
+        sauveScore(score, labyrinth);
+
     }
+    sauveLaby(labyrinth, labyrinth->name); //saves the move in case player leaves and wants to play again with that labyrinth
 }

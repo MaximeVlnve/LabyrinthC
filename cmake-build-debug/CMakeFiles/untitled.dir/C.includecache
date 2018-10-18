@@ -6,15 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions.c
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_sauves.c
 header.h
-/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header.h
 
-/Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_play.c
-header.h
-/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
-
-/Users/maxime/Documents/Ensi/Prog/LabyrinthC/header.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header.h
 stdio.h
 -
 stdlib.h

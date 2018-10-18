@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/maxime/Documents/Ensi/Prog/LabyrinthC
+CMAKE_SOURCE_DIR = /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/untitled.dir/depend.make
@@ -59,68 +59,81 @@ include CMakeFiles/untitled.dir/flags.make
 
 CMakeFiles/untitled.dir/main.c.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/untitled.dir/main.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/main.c.o   -c /Users/maxime/Documents/Ensi/Prog/LabyrinthC/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/untitled.dir/main.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/main.c.o   -c /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/main.c
 
 CMakeFiles/untitled.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/main.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/LabyrinthC/main.c > CMakeFiles/untitled.dir/main.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/main.c > CMakeFiles/untitled.dir/main.c.i
 
 CMakeFiles/untitled.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/main.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/LabyrinthC/main.c -o CMakeFiles/untitled.dir/main.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/main.c -o CMakeFiles/untitled.dir/main.c.s
 
 CMakeFiles/untitled.dir/functions_sauves.c.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/functions_sauves.c.o: ../functions_sauves.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/untitled.dir/functions_sauves.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions_sauves.c.o   -c /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_sauves.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/untitled.dir/functions_sauves.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions_sauves.c.o   -c /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_sauves.c
 
 CMakeFiles/untitled.dir/functions_sauves.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/functions_sauves.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_sauves.c > CMakeFiles/untitled.dir/functions_sauves.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_sauves.c > CMakeFiles/untitled.dir/functions_sauves.c.i
 
 CMakeFiles/untitled.dir/functions_sauves.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/functions_sauves.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_sauves.c -o CMakeFiles/untitled.dir/functions_sauves.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_sauves.c -o CMakeFiles/untitled.dir/functions_sauves.c.s
 
 CMakeFiles/untitled.dir/functions_init_labyrinth.c.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/functions_init_labyrinth.c.o: ../functions_init_labyrinth.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/untitled.dir/functions_init_labyrinth.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions_init_labyrinth.c.o   -c /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_init_labyrinth.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/untitled.dir/functions_init_labyrinth.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions_init_labyrinth.c.o   -c /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_init_labyrinth.c
 
 CMakeFiles/untitled.dir/functions_init_labyrinth.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/functions_init_labyrinth.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_init_labyrinth.c > CMakeFiles/untitled.dir/functions_init_labyrinth.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_init_labyrinth.c > CMakeFiles/untitled.dir/functions_init_labyrinth.c.i
 
 CMakeFiles/untitled.dir/functions_init_labyrinth.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/functions_init_labyrinth.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_init_labyrinth.c -o CMakeFiles/untitled.dir/functions_init_labyrinth.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_init_labyrinth.c -o CMakeFiles/untitled.dir/functions_init_labyrinth.c.s
 
 CMakeFiles/untitled.dir/functions.c.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/functions.c.o: ../functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/untitled.dir/functions.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions.c.o   -c /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/untitled.dir/functions.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions.c.o   -c /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions.c
 
 CMakeFiles/untitled.dir/functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/functions.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions.c > CMakeFiles/untitled.dir/functions.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions.c > CMakeFiles/untitled.dir/functions.c.i
 
 CMakeFiles/untitled.dir/functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/functions.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions.c -o CMakeFiles/untitled.dir/functions.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions.c -o CMakeFiles/untitled.dir/functions.c.s
 
 CMakeFiles/untitled.dir/functions_play.c.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/functions_play.c.o: ../functions_play.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/untitled.dir/functions_play.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions_play.c.o   -c /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_play.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/untitled.dir/functions_play.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions_play.c.o   -c /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_play.c
 
 CMakeFiles/untitled.dir/functions_play.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/functions_play.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_play.c > CMakeFiles/untitled.dir/functions_play.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_play.c > CMakeFiles/untitled.dir/functions_play.c.i
 
 CMakeFiles/untitled.dir/functions_play.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/functions_play.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/LabyrinthC/functions_play.c -o CMakeFiles/untitled.dir/functions_play.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_play.c -o CMakeFiles/untitled.dir/functions_play.c.s
+
+CMakeFiles/untitled.dir/functions_input.c.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/functions_input.c.o: ../functions_input.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/untitled.dir/functions_input.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/functions_input.c.o   -c /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_input.c
+
+CMakeFiles/untitled.dir/functions_input.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/functions_input.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_input.c > CMakeFiles/untitled.dir/functions_input.c.i
+
+CMakeFiles/untitled.dir/functions_input.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/functions_input.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_input.c -o CMakeFiles/untitled.dir/functions_input.c.s
 
 # Object files for target untitled
 untitled_OBJECTS = \
@@ -128,7 +141,8 @@ untitled_OBJECTS = \
 "CMakeFiles/untitled.dir/functions_sauves.c.o" \
 "CMakeFiles/untitled.dir/functions_init_labyrinth.c.o" \
 "CMakeFiles/untitled.dir/functions.c.o" \
-"CMakeFiles/untitled.dir/functions_play.c.o"
+"CMakeFiles/untitled.dir/functions_play.c.o" \
+"CMakeFiles/untitled.dir/functions_input.c.o"
 
 # External object files for target untitled
 untitled_EXTERNAL_OBJECTS =
@@ -138,9 +152,10 @@ untitled: CMakeFiles/untitled.dir/functions_sauves.c.o
 untitled: CMakeFiles/untitled.dir/functions_init_labyrinth.c.o
 untitled: CMakeFiles/untitled.dir/functions.c.o
 untitled: CMakeFiles/untitled.dir/functions_play.c.o
+untitled: CMakeFiles/untitled.dir/functions_input.c.o
 untitled: CMakeFiles/untitled.dir/build.make
 untitled: CMakeFiles/untitled.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable untitled"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable untitled"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/untitled.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +168,6 @@ CMakeFiles/untitled.dir/clean:
 .PHONY : CMakeFiles/untitled.dir/clean
 
 CMakeFiles/untitled.dir/depend:
-	cd /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/maxime/Documents/Ensi/Prog/LabyrinthC /Users/maxime/Documents/Ensi/Prog/LabyrinthC /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug /Users/maxime/Documents/Ensi/Prog/LabyrinthC/cmake-build-debug/CMakeFiles/untitled.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/cmake-build-debug/CMakeFiles/untitled.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/untitled.dir/depend
 

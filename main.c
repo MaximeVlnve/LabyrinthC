@@ -7,14 +7,7 @@ int main() {
     Labyrinth labyrinth;
 
     while (exit){
-        printf("------------ LABYRINTH ------------\n\n");
-        printf("\t 1 - Creer un labyrinthe\n");
-        printf("\t 2 - Charger un labyrinthe\n");
-        printf("\t 3 - Jouer\n");
-        printf("\t 4 - Quitter\n\n");
-        printf("-----------------------------------\n\n");
-
-        scanf("%d", &choice);
+        choice = menu(1,4);
 
         switch(choice)
         {
