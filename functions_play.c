@@ -34,7 +34,7 @@ void play(Labyrinth* labyrinth) {
     Coordinates nextPosition;
     Coordinates bonus;
     Coordinates malus;
-    char nextMove[10];
+    char nextMove[CHAR_MAX];
     int boolIsMoveAllowed;
     int boolIsGameOver;
     Score* score;
@@ -59,7 +59,7 @@ void play(Labyrinth* labyrinth) {
 
         do {
             printf("Use ZQSD to move or press E to back menu\n");
-            secure_input(nextMove, 10);
+            secure_input(nextMove, CHAR_MAX);
 
             if (nextMove[0] == 'Z' || nextMove[0] == 'z') { //if else to decide coordinates according zqsd system
                 nextPosition.x = labyrinth->player->x-1;
@@ -91,13 +91,13 @@ void play(Labyrinth* labyrinth) {
 
 
         if (labyrinth->matrix[nextPosition.x][nextPosition.y] == 3) {
-            if (score->points - 3 >= 0) {
-                score->points -= 3;
+            if (score->points - POINTS >= 0) {
+                score->points -= POINTS;
             } else {
                 score->points -= score->points;
             }
         } else if (labyrinth->matrix[nextPosition.x][nextPosition.y] == 4) {
-            score->points += 3;
+            score->points += POINTS;
         } else {
             score->points++;
         }
@@ -130,7 +130,7 @@ void play(Labyrinth* labyrinth) {
     save_laby(labyrinth, labyrinth->name); //saves the move in case player leaves and wants to play again with that labyrinth
 
     printf("Entrez votre nom\n");
-    secure_input(score->name, 256);
+    secure_input(score->name, CHAR_MAX);
 
     save_score(score, labyrinth);
 }

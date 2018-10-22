@@ -3,8 +3,11 @@
 int main() {
     srand( time(NULL) ); //init rand
 
-    int choice, exit = 1;
+    int choice;
+    int exit;
     Labyrinth labyrinth;
+
+    exit = 1;
 
     while (exit){
         system("clear");

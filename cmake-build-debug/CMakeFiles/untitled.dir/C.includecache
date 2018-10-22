@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_play.c
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_init_labyrinth.c
 header_sauves.h
 /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_sauves.h
 
@@ -45,8 +45,4 @@ header_play.h
 /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_useful_functions.h
 header.h
 /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header.h
-
-/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/main.c
-header_sauves.h
-/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_sauves.h
 

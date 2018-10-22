@@ -10,10 +10,10 @@
  * comme les dimensions (row et col), la position du joueur
  * (afin de replacer le joueur correctement quand on chargera le labyrinthe).
  */
-void save_laby(Labyrinth* labyrinth, char fileName[256]) {
+void save_laby(Labyrinth* labyrinth, char fileName[CHAR_MAX]) {
     int i, j;
-    char path[100];
-    char extension[5];
+    char path[CHAR_MAX];
+    char extension[CHAR_MAX];
     FILE *f;
 
     strcpy(path,  "/Users/maxime/Documents/Ensi/Prog/Recovery_bis/LabyrinthC/sauves/");
@@ -47,15 +47,15 @@ void save_laby(Labyrinth* labyrinth, char fileName[256]) {
  * présentes dans le fichier.
  */
 void load_laby(Labyrinth* labyrinth) {
-    char fileName[256];
-    char path[100];
-    char extension[5];
-    char str[256];
+    char fileName[CHAR_MAX];
+    char path[CHAR_MAX];
+    char extension[CHAR_MAX];
+    char str[CHAR_MAX];
     int index;
     int row;
     int col;
     int isEmpty;
-    int vector[256];
+    int vector[CHAR_MAX];
     int i;
     int j;
     int value;
@@ -74,7 +74,7 @@ void load_laby(Labyrinth* labyrinth) {
     strcpy(path,  "/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/sauves/");
     strcpy(extension, ".cfg");
 
-    if (secure_input(fileName, 256)) {
+    if (secure_input(fileName, CHAR_MAX)) {
         strcat(path, fileName);
         strcat(path, extension); //copying path, fileName, and extension to load a labyrinth
 
@@ -87,7 +87,7 @@ void load_laby(Labyrinth* labyrinth) {
             }
 
             while (1) {
-                if (fgets(str, 240, f) == NULL) break;
+                if (fgets(str, CHAR_MAX, f) == NULL) break;
 
                 switch (index) {
                     case 0:
@@ -144,9 +144,9 @@ void load_laby(Labyrinth* labyrinth) {
 }
 
 void save_score(Score* score, Labyrinth* labyrinth) {
-    char path[100];
-    char extension[7];
-    Score results[11];
+    char path[CHAR_MAX];
+    char extension[CHAR_MAX];
+    Score results[NB_SCORE];
     Score tmp;
     int nbScores;
     int i;
@@ -160,9 +160,9 @@ void save_score(Score* score, Labyrinth* labyrinth) {
 
     f = fopen(path,"r");
 
-    if (access( path, F_OK ) != -1) {
+    if (f != NULL) {
         for (nbScores = 0 ; fscanf(f,"%s %d",tmp.name,&tmp.points) != EOF ; nbScores++) {
-            if (nbScores < 10) {
+            if (nbScores < NB_SCORE-1) {
                 results[nbScores] = tmp;
             }
         }

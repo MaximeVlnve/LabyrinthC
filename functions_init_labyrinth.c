@@ -150,7 +150,11 @@ void init_labyrinth(Labyrinth* labyrinth) {
     int** matrix;
     int value;
     int dimension;
+    int difficulty;
     Coordinates *listTmpCoordinates;
+
+    difficulty = get_difficulty();
+    printf("Difficulty : %d\n", difficulty);
 
     value = 0;
     dimension = (labyrinth->row-2)*(labyrinth->col-2); //external walls do not count
@@ -171,7 +175,13 @@ void init_labyrinth(Labyrinth* labyrinth) {
     free_vector_coordinates(listTmpCoordinates);
 
     clear_labyrinth(labyrinth);
+    if (difficulty == 2) {
+        break_walls_randomly(labyrinth, listTmpCoordinates);
+    }
     setting_bonus_malus(labyrinth);
+
+    //
+
 }
 
 /*
@@ -179,7 +189,8 @@ void init_labyrinth(Labyrinth* labyrinth) {
  */
 void create_labyrinth(Labyrinth* labyrinth) {
     int row, col;
-    char fileName[256], buffer[256];
+    char fileName[CHAR_MAX];
+    char buffer[CHAR_MAX];
 
     labyrinth->player = allocate_vector_coordinates(1, 0);
     labyrinth->bonus = allocate_vector_coordinates(1, 0);
@@ -187,19 +198,19 @@ void create_labyrinth(Labyrinth* labyrinth) {
 
     printf("Nom du fichier?\n");
 
-    secure_input(fileName, 256);
+    secure_input(fileName, CHAR_MAX);
 
     strcpy(labyrinth->name, fileName);
 
     do {
         printf("How many rows ? (odd)\n");
-        fgets (buffer, 256, stdin);
+        fgets (buffer, CHAR_MAX, stdin);
         row = atoi (buffer);
     } while (row % 2 == 0);
 
     do {
         printf("How many columns ? (odd)\n");
-        fgets (buffer, 256, stdin);
+        fgets (buffer, CHAR_MAX, stdin);
         col = atoi (buffer);
     } while (col % 2 == 0);
 
@@ -214,7 +225,10 @@ void create_labyrinth(Labyrinth* labyrinth) {
 }
 
 void setting_bonus_malus(Labyrinth* labyrinth) {
-    int bonusX, bonusY, malusX, malusY;
+    int bonusX;
+    int bonusY;
+    int malusX;
+    int malusY;
 
     do {
         bonusX = generate_rand(labyrinth->row -1);
@@ -233,4 +247,41 @@ void setting_bonus_malus(Labyrinth* labyrinth) {
     labyrinth->matrix[malusX][malusY] = 4;
     labyrinth->malus->x = malusX;
     labyrinth->malus->y = malusY;
+}
+
+void break_walls_randomly(Labyrinth* labyrinth, Coordinates* vector) {
+    int times;
+    int i;
+    int random;
+    int dimension;
+    int** tabSurroundings;
+
+    dimension = (labyrinth->row - 2) * (labyrinth->col - 2);
+    times = dimension % 10;
+
+    printf("Dimension %d\n", dimension);
+    printf("Times %d\n", times);
+
+    for (i=0; i<1; i++) {
+        do {
+            random = generate_rand(dimension);
+        } while (labyrinth->matrix[vector[random].x][vector[random].y] != 0);
+
+        tabSurroundings = fill_surroundings(labyrinth->matrix, vector, i);
+        check_surroundings(tabSurroundings);
+
+        printf("Coordinates %d %d\n", vector[random].x, vector[random].y);
+
+        for(int i=0; i<4; i++){
+            printf("tabSurr 0 %d = %d\n", i, tabSurroundings[0][i]);
+        }
+
+        printf("\n\n");
+
+        for(int i=0; i<4; i++){
+            printf("tabSurr 1 %d = %d\n", i, tabSurroundings[1][i]);
+        }
+    }
+
+
 }

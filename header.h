@@ -11,7 +11,9 @@
 #ifndef UNTITLED_HEADER_H
 #define UNTITLED_HEADER_H
 
-#endif //UNTITLED_HEADER_H
+#define CHAR_MAX 256
+#define POINTS 3
+#define NB_SCORE 11
 
 typedef struct
 {
@@ -24,7 +26,7 @@ typedef struct
     int** matrix;
     int row;
     int col;
-    char name[256];
+    char name[CHAR_MAX];
     int boolEmpty;
     Coordinates* player;
     Coordinates* bonus;
@@ -34,5 +36,7 @@ typedef struct
 typedef struct
 {
     int points;
-    char name[256];
+    char name[CHAR_MAX];
 } Score;
+
+#endif //UNTITLED_HEADER_H
