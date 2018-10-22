@@ -1,14 +1,14 @@
 //
 // Created by Maxime on 09/10/2018.
 //
-#include "header.h"
+#include "header_sauves.h"
 
 /*
  * Permet de générer un labyrinthe parfait en parcourant un tableau de coordonnées
  * préalablement mélangé. Puis on vérifie les cases environnantes afin de savoir
  * si l'on doit modifier la case que l'on traite ou pas.
  */
-void generateLabyrinth(Labyrinth* labyrinth, Coordinates* vector) {
+void generate_labyrinth(Labyrinth* labyrinth, Coordinates* vector) {
     int** tabSurroundings;
     int newValue;
     int i;
@@ -18,23 +18,23 @@ void generateLabyrinth(Labyrinth* labyrinth, Coordinates* vector) {
         if (!(vector[i].x == 0 || vector[i].x == labyrinth->row - 1 || vector[i].y == 0 || vector[i].y == labyrinth->col - 1)) {//verify coord is not an external wall
 
             if (labyrinth->matrix[vector[i].x][vector[i].y] == 0) { //verify if coord is a wall
-                tabSurroundings = fillSurroundings(labyrinth->matrix, vector, i);
-                checkSurroundings(tabSurroundings);
-                newValue = valueToReplaceSurroundings(tabSurroundings);
-                updateMatrix(labyrinth, newValue, vector[i].x, vector[i].y, tabSurroundings);
+                tabSurroundings = fill_surroundings(labyrinth->matrix, vector, i);
+                check_surroundings(tabSurroundings);
+                newValue = value_to_replace_surroundings(tabSurroundings);
+                update_matrix(labyrinth, newValue, vector[i].x, vector[i].y, tabSurroundings);
             }
         }
     }
 
-    freeMatrix(tabSurroundings, 2);
+    free_matrix(tabSurroundings, 2);
 }
 
 /*
  * Rempli un tableau des coordonnées environnantes de la case que l'on analyse.
  */
-int** fillSurroundings(int** matrix, Coordinates* vector, int index) {
+int** fill_surroundings(int** matrix, Coordinates* vector, int index) {
     int** matrixSurroundings;
-    matrixSurroundings = allocateMatrix(2, 4, 0);
+    matrixSurroundings = allocate_matrix(2, 4, 0);
 
     matrixSurroundings[0][0] = matrix[(vector[index].x) - 1][vector[index].y];
     matrixSurroundings[0][1] = matrix[(vector[index].x) + 1][vector[index].y];
@@ -47,7 +47,7 @@ int** fillSurroundings(int** matrix, Coordinates* vector, int index) {
 /*
  * Compte le nombre de valeurs présentes parmis les cases environnantes
  */
-void checkSurroundings(int** matrixSurroundings) {
+void check_surroundings(int** matrixSurroundings) {
     int cpt;
     int i;
     int j;
@@ -67,7 +67,7 @@ void checkSurroundings(int** matrixSurroundings) {
 /*
  * retourne la valeur par laquelle on doit remplacer la case que l'on analyse
  */
-int valueToReplaceSurroundings(int** matrixSurroundings) {
+int value_to_replace_surroundings(int** matrixSurroundings) {
     int i;
 
     for (i=0; i<4; i++) {
@@ -84,7 +84,7 @@ int valueToReplaceSurroundings(int** matrixSurroundings) {
 /*
  * propage la nouvelle valeur dans le labyrinthe
  */
-void updateMatrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrixSurroundings) { //dispatch the newValue when breking a wall
+void update_matrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrixSurroundings) { //dispatch the newValue when breking a wall
     int i;
     int j;
     int k;
@@ -106,7 +106,7 @@ void updateMatrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrix
 /*
  * unifie toute les valeurs si elles ne valent pas 0 (= un mur) afin d'avoir un seul chemin possible
  */
-void clearLabyrinth(Labyrinth* labyrinth) {
+void clear_labyrinth(Labyrinth* labyrinth) {
     int i;
     int j;
     for (i=1; i<labyrinth->row; i++) {
@@ -119,23 +119,12 @@ void clearLabyrinth(Labyrinth* labyrinth) {
 /*
  * affiche le labyrinthe proprement
  */
-void displayMatrixClean(Labyrinth* labyrinth) {
+void display_matrix_clean(Labyrinth* labyrinth) {
     int i;
     int j;
 
     for (i=0; i<labyrinth->row; i++) {
         for (j=0; j<labyrinth->col; j++) {
-            /*switch (labyrinth->matrix[i][j]){
-                case 0 :
-                    printf("# ");
-                case 1 :
-                    printf("  ");
-                case 2 :
-                    printf("P ");
-                default :
-                    printf("B ");
-            }*/
-
             if (labyrinth->matrix[i][j] == 0) {
                 printf("# ");
             } else if (labyrinth->matrix[i][j] == 1) {
@@ -149,8 +138,6 @@ void displayMatrixClean(Labyrinth* labyrinth) {
             } else {
                printf("%d ", labyrinth->matrix[i][j]);
             }
-            //labyrinth->matrix[i][j] == 0 ? printf("# ") : printf("%d ", labyrinth->matrix[i][j]);
-            //labyrinth->matrix[i][j] == 0 ? ( (i == 1 && j == 0) || (i == labyrinth->row-2 && j == labyrinth->col-1) ? printf("  ") : printf("# ")) : printf("  ") ;
         }
         printf("\n");
     }
@@ -159,51 +146,50 @@ void displayMatrixClean(Labyrinth* labyrinth) {
 /*
  * initialise un labyrinthe parfait
  */
-void initLabyrinth(Labyrinth* labyrinth) {
+void init_labyrinth(Labyrinth* labyrinth) {
     int** matrix;
-    int value = 0;
+    int value;
     int dimension;
+    Coordinates *listTmpCoordinates;
 
-    matrix = allocateMatrix(labyrinth->row, labyrinth->col , value);
+    value = 0;
+    dimension = (labyrinth->row-2)*(labyrinth->col-2); //external walls do not count
+
+    matrix = allocate_matrix(labyrinth->row, labyrinth->col , value);
 
     labyrinth->matrix = matrix;
 
-    initMatrix(labyrinth);
+    init_matrix(labyrinth);
 
-    Coordinates *listTmpCoordinates;
-    dimension = (labyrinth->row-2)*(labyrinth->col-2); //external walls do not count
 
-    listTmpCoordinates = allocateVectorCoordinates(dimension, value);
+    listTmpCoordinates = allocate_vector_coordinates(dimension, value);
+    fill_coordinates_vector(labyrinth->row, labyrinth->col , listTmpCoordinates);
 
-    fillCoordinatesVector(labyrinth->row, labyrinth->col , listTmpCoordinates);
+    randomize_coordinates_vector(labyrinth->row, labyrinth->col, listTmpCoordinates);
+    generate_labyrinth(labyrinth, listTmpCoordinates);
 
-    randomizeCoordinatesVector(labyrinth->row, labyrinth->col, listTmpCoordinates);
-    generateLabyrinth(labyrinth, listTmpCoordinates);
+    free_vector_coordinates(listTmpCoordinates);
 
-    freeVectorCoordinates(listTmpCoordinates);
-
-    clearLabyrinth(labyrinth);
-    settingBonusMalus(labyrinth);
-    displayMatrixClean(labyrinth);
+    clear_labyrinth(labyrinth);
+    setting_bonus_malus(labyrinth);
 }
 
 /*
  * Créer un labyrinthe parfait et son fichier de sauvegarde correspondant
  */
-void createLabyrinth(Labyrinth* labyrinth){
+void create_labyrinth(Labyrinth* labyrinth) {
     int row, col;
     char fileName[256], buffer[256];
 
-    labyrinth->player = allocateVectorCoordinates(1, 0);
-    labyrinth->bonus = allocateVectorCoordinates(1, 0);
-    labyrinth->malus = allocateVectorCoordinates(1, 0);
+    labyrinth->player = allocate_vector_coordinates(1, 0);
+    labyrinth->bonus = allocate_vector_coordinates(1, 0);
+    labyrinth->malus = allocate_vector_coordinates(1, 0);
 
     printf("Nom du fichier?\n");
 
-    secureInput(fileName, 256);
+    secure_input(fileName, 256);
 
     strcpy(labyrinth->name, fileName);
-
 
     do {
         printf("How many rows ? (odd)\n");
@@ -223,24 +209,28 @@ void createLabyrinth(Labyrinth* labyrinth){
     labyrinth->player->x = 1;
     labyrinth->player->y = 0;
 
-    initLabyrinth(labyrinth);
-    sauveLaby(labyrinth, fileName);
+    init_labyrinth(labyrinth);
+    save_laby(labyrinth, fileName);
 }
 
-void settingBonusMalus(Labyrinth* labyrinth) {
+void setting_bonus_malus(Labyrinth* labyrinth) {
     int bonusX, bonusY, malusX, malusY;
 
     do {
-        bonusX = generateRand(labyrinth->row -1);
-        bonusY = generateRand(labyrinth->col -1);
+        bonusX = generate_rand(labyrinth->row -1);
+        bonusY = generate_rand(labyrinth->col -1);
     } while ( labyrinth->matrix[bonusX][bonusY] != 1 );
 
     labyrinth->matrix[bonusX][bonusY] = 3;
+    labyrinth->bonus->x = bonusX;
+    labyrinth->bonus->y = bonusY;
 
     do {
-        malusX = generateRand(labyrinth->row - 1);
-        malusY = generateRand(labyrinth->col - 1);
+        malusX = generate_rand(labyrinth->row - 1);
+        malusY = generate_rand(labyrinth->col - 1);
     } while ( labyrinth->matrix[malusX][malusY] != 1);
 
     labyrinth->matrix[malusX][malusY] = 4;
+    labyrinth->malus->x = malusX;
+    labyrinth->malus->y = malusY;
 }

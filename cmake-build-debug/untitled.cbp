@@ -98,6 +98,24 @@
 		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header.h">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_functions.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_functions_input.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_init_labyrinth.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_play.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_sauves.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_useful_functions.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/main.c">
 			<Option target="untitled"/>
 		</Unit>

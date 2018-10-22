@@ -1,17 +1,17 @@
 //
-// Created by Maxime on 09/10/2018.
+// Created by Maxime on 21/10/2018.
 //
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <memory.h>
 #include <unistd.h>
 
-#ifndef PROJET_HEADER_H
-#define PROJET_HEADER_H
+#ifndef UNTITLED_HEADER_H
+#define UNTITLED_HEADER_H
 
-#endif //PROJET_HEADER_H
-
+#endif //UNTITLED_HEADER_H
 
 typedef struct
 {
@@ -36,60 +36,3 @@ typedef struct
     int points;
     char name[256];
 } Score;
-
-
-//      Vectors
-//          Int
-void displayVector(int *vector, int dimension);
-int* allocateVector(int dimension, int value);
-void freeVector(int* vector);
-void freeVectorCoordinates(Coordinates* vector);
-
-//          Coordinates
-void displayVectorCoordinates(Coordinates *vector, int dimension);
-Coordinates* allocateVectorCoordinates(int dimension, int value);
-void fillCoordinatesVector(int row, int col, Coordinates* vector);
-void randomizeCoordinatesVector(int row, int col, Coordinates* vector);
-
-//  Matrix
-
-void displayMatrix(Labyrinth* labyrinth);
-int** allocateMatrix(int row, int col, int value);
-void freeMatrix(int** matrix, int row);
-void initMatrix(Labyrinth* labyrinth);
-
-
-
-// Functions init laby
-
-int** fillSurroundings(int** matrix, Coordinates* vector, int index);
-void checkSurroundings(int** matrixSurroundings);
-int valueToReplaceSurroundings(int** matrixSurroundings);
-void updateMatrix(Labyrinth* labyrinth, int newValue, int x, int y, int** matrixSurroundings);
-void clearLabyrinth(Labyrinth* labyrinth);
-void displayMatrixClean(Labyrinth* labyrinth);
-void generateLabyrinth(Labyrinth* labyrinth, Coordinates* vector);
-void initLabyrinth(Labyrinth* labyrinth);
-
-void createLabyrinth(Labyrinth* labyrinth);
-void settingBonusMalus(Labyrinth* labyrinth);
-
-
-// Functions sauves
-
-void sauveLaby(Labyrinth* labyrinth, char fileName[256]);
-void loadLaby(Labyrinth* labyrinth);
-void sauveScore(Score* score, Labyrinth* labyrinth);
-
-// Functions play
-
-void play(Labyrinth* labyrinth);
-int verifyMoveAllowed(Labyrinth* labyrinth, Coordinates nextPosition);
-
-// Functions input
-//  Functions useful
-int generateRand(int max);
-void emptyBuffer();
-int secureInput(char *text, int length);
-int menu(int choixMin, int choixMax);
-

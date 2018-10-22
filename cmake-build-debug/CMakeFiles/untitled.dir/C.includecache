@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_sauves.c
-header.h
-/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/functions_play.c
+header_sauves.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_sauves.h
 
 /Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header.h
 stdio.h
@@ -21,4 +21,32 @@ memory.h
 -
 unistd.h
 -
+
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_functions.h
+header_functions_input.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_functions_input.h
+
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_functions_input.h
+header_useful_functions.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_useful_functions.h
+
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_init_labyrinth.h
+header_functions.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_functions.h
+
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_play.h
+header_init_labyrinth.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_init_labyrinth.h
+
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_sauves.h
+header_play.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_play.h
+
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_useful_functions.h
+header.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header.h
+
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/main.c
+header_sauves.h
+/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/header_sauves.h
 

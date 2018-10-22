@@ -1,4 +1,4 @@
-#include "header.h"
+#include "header_sauves.h"
 
 int main() {
     srand( time(NULL) ); //init rand
@@ -7,12 +7,13 @@ int main() {
     Labyrinth labyrinth;
 
     while (exit){
+        system("clear");
         choice = menu(1,4);
 
         switch(choice)
         {
             case 1:
-                createLabyrinth(&labyrinth);
+                create_labyrinth(&labyrinth);
 
                 printf("\n------------------------------\n");
                 printf("Current Laby :\n");
@@ -24,7 +25,7 @@ int main() {
                 play(&labyrinth);
                 break;
             case 2:
-                loadLaby(&labyrinth);
+                load_laby(&labyrinth);
                 play(&labyrinth);
                 break;
             case 3:
@@ -32,11 +33,10 @@ int main() {
 
                 if (labyrinth.boolEmpty == 1){
                     printf("Laby chargé %s\n", labyrinth.name);
-                    displayMatrixClean(&labyrinth);
                     play(&labyrinth);
                 } else {
                     printf("Pas de laby chargé\n");
-                    loadLaby(&labyrinth);
+                    load_laby(&labyrinth);
                     play(&labyrinth);
                 }
                 break;
@@ -48,30 +48,5 @@ int main() {
 
     }
 
-
-
-
-
-
-
-    /*Labyrinth labyrinth;
-
-
-    createLabyrinth(&labyrinth);
-
-    settingBonusMalus(&labyrinth);*/
-    //play(&labyrinth);
-
-    //loadLaby(&labyrinth);
-
-    //displayMatrixClean(&labyrinth);
-
-
-
     return(0);
-
-
-    //freeMatrix(labyrinth.matrix, labyrinth.row);
-
-    return 0;
 }

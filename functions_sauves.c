@@ -2,33 +2,34 @@
 // Created by Maxime on 10/10/2018.
 //
 
-#include "header.h"
+#include "header_sauves.h"
 
 /*
- * La fonction sauveLaby utilise un nom de fichier en parametre et
+ * La fonction save_laby utilise un nom de fichier en parametre et
  * enregistre le labirynthe. On sauvegarde des parametres utiles pour la suite
  * comme les dimensions (row et col), la position du joueur
  * (afin de replacer le joueur correctement quand on chargera le labyrinthe).
  */
-void sauveLaby(Labyrinth* labyrinth, char fileName[256]) {
+void save_laby(Labyrinth* labyrinth, char fileName[256]) {
     int i, j;
-    char path[100], extension[5];
+    char path[100];
+    char extension[5];
+    FILE *f;
 
     strcpy(path,  "/Users/maxime/Documents/Ensi/Prog/Recovery_bis/LabyrinthC/sauves/");
-    strcpy(extension, ".txt");
+    strcpy(extension, ".cfg");
 
     strcat(path, fileName);
     strcat(path, extension); //copying path, fileName, and extension to save a labyrinth
 
 
-    FILE *f = fopen(path, "w"); // open the file or create it if it already exists
+    f = fopen(path, "w"); // open the file or create it if it already exists
 
     if (f == NULL) {
         printf("Error opening file!\n");
         exit(1);
     }
 
-    //fprintf(f, "%d\n%d\n%d\n%d\n%d\n", labyrinth->player->x, labyrinth->player->y, labyrinth->col, labyrinth->row, labyrinth->boolEmpty);
     fprintf(f, "%d\n%d\n1\n", labyrinth->col, labyrinth->row); //writing infos we need if we want to re-open
 
     for (i=0; i<labyrinth->row; i++) {
@@ -38,7 +39,6 @@ void sauveLaby(Labyrinth* labyrinth, char fileName[256]) {
     }
 
     fclose(f);
-
 }
 /*
  * On utilise une entrée utilisateur pour savoir quel labyrinthe charger.
@@ -46,28 +46,40 @@ void sauveLaby(Labyrinth* labyrinth, char fileName[256]) {
  * alors on accède au fichier et on récupère les informations
  * présentes dans le fichier.
  */
-void loadLaby(Labyrinth* labyrinth) {
-    char fileName[256], path[100], extension[5];
+void load_laby(Labyrinth* labyrinth) {
+    char fileName[256];
+    char path[100];
+    char extension[5];
+    char str[256];
+    int index;
+    int row;
+    int col;
+    int isEmpty;
+    int vector[256];
+    int i;
+    int j;
+    int value;
+    FILE *f;
 
-    labyrinth->player = allocateVectorCoordinates(1,0);
-    labyrinth->bonus = allocateVectorCoordinates(1, 0);
-    labyrinth->malus = allocateVectorCoordinates(1, 0);
+    index = 0;
+    value = 0;
+
+    labyrinth->player = allocate_vector_coordinates(1,0);
+    labyrinth->bonus = allocate_vector_coordinates(1, 0);
+    labyrinth->malus = allocate_vector_coordinates(1, 0);
+
 
     printf("Enter the laby's name you want to load\n");
 
     strcpy(path,  "/Users/maxime/Documents/Ensi/Prog/Recovery_Bis/LabyrinthC/sauves/");
-    strcpy(extension, ".txt");
+    strcpy(extension, ".cfg");
 
-    if (secureInput(fileName, 256)) {
-
+    if (secure_input(fileName, 256)) {
         strcat(path, fileName);
         strcat(path, extension); //copying path, fileName, and extension to load a labyrinth
 
         if (access( path, F_OK ) != -1) { //verifies file exists
-            char str[256];
-            int index=0, row, col, isEmpty, vector[256], i, j, value=0;
-
-            FILE *f = fopen(path, "r");
+            f = fopen(path, "r");
 
             if (f == NULL) {
                 printf("Error opening file!\n");
@@ -92,27 +104,30 @@ void loadLaby(Labyrinth* labyrinth) {
                 index++;
             }
 
-            for (i=0; i<strlen(str); i++) {
+            for (i=0; i<(int)strlen(str); i++) {
                 vector[i] = str[i] - '0'; // retrieve labyrinth's coordinates in an array
             }
 
             labyrinth->player->x = 1;
             labyrinth->player->y = 0;
+
             labyrinth->row = row;
             labyrinth->col = col;
-            labyrinth->boolEmpty = isEmpty;
-            strcpy(labyrinth->name, fileName);
-            labyrinth->matrix = allocateMatrix(labyrinth->row, labyrinth->col, 0);
 
+            labyrinth->boolEmpty = isEmpty;
+
+            strcpy(labyrinth->name, fileName);
+
+            labyrinth->matrix = allocate_matrix(labyrinth->row, labyrinth->col, 0);
 
             for (i=0; i<labyrinth->row; i++) {
                 for (j=0; j<labyrinth->col; j++) {
                     labyrinth->matrix[i][j] = vector[value];
 
-                    if (labyrinth->matrix[i][j] == 3){
+                    if (labyrinth->matrix[i][j] == 3) {
                             labyrinth->bonus->x = i;
                             labyrinth->bonus->y = j;
-                    } else if (labyrinth->matrix[i][j] == 4){
+                    } else if (labyrinth->matrix[i][j] == 4) {
                         labyrinth->malus->x = i;
                         labyrinth->malus->y = j;
                     }
@@ -122,23 +137,58 @@ void loadLaby(Labyrinth* labyrinth) {
             }
 
             fclose(f);
-
-            displayMatrixClean(labyrinth);
+        } else {
+            create_labyrinth(labyrinth);
         }
     }
 }
 
-void sauveScore(Score* score, Labyrinth* labyrinth){
-    char path[100], extension[5];
+void save_score(Score* score, Labyrinth* labyrinth) {
+    char path[100];
+    char extension[7];
+    Score results[11];
+    Score tmp;
+    int nbScores;
+    int i;
+    FILE *f;
 
     strcpy(path,  "/Users/maxime/Documents/Ensi/Prog/Recovery_bis/LabyrinthC/sauves/");
-    strcpy(extension, ".txt");
+    strcpy(extension, ".score");
 
     strcat(path, labyrinth->name);
-    strcat(path, "_score");
     strcat(path, extension);
 
-    printf("%s\n", path);
+    f = fopen(path,"r");
+
+    if (access( path, F_OK ) != -1) {
+        for (nbScores = 0 ; fscanf(f,"%s %d",tmp.name,&tmp.points) != EOF ; nbScores++) {
+            if (nbScores < 10) {
+                results[nbScores] = tmp;
+            }
+        }
+
+        fclose(f);
+        f = fopen(path,"w");
+
+        strcpy(results[nbScores].name, score->name);
+        results[nbScores].points = score->points;
+
+        qsort(results,nbScores+1,sizeof(Score),compare_scores_points);
+
+        for(i = 0; i < 10; i++) {
+            if (i<=nbScores) {
+                fprintf(f, "%s %d\n",results[i].name, results[i].points);
+            }
+
+        }
+        fclose(f);
+    } else {
+        fclose(f);
+
+        f = fopen(path, "w");
+        fprintf(f, "%s %d\n", score->name, score->points);
+        fclose(f);
+    }
 }
 
 
